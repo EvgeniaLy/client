@@ -2017,9 +2017,10 @@ func (t *Team) sigPayload(sigMulti []libkb.SigMultiItem, args sigPayloadArgs) li
 	} else if args.teamEKPayload != nil {
 		if args.teamEKPayload.boxes != nil && len(*args.teamEKPayload.boxes) > 0 {
 			payload["team_ek"] = libkb.JSONPayload{
-				"sig":     args.teamEKPayload.sig,
-				"boxes":   args.teamEKPayload.boxes,
-				"team_id": t.ID,
+				"sig":               args.teamEKPayload.sig,
+				"boxes":             args.teamEKPayload.boxes,
+				"team_id":           t.ID,
+				"creator_device_id": string(t.G().ActiveDevice.DeviceID()),
 			}
 		}
 	}

@@ -283,6 +283,7 @@ func (e *RevokeEngine) Run(m libkb.MetaContext) error {
 			userEKSection := make(libkb.JSONPayload)
 			userEKSection["sig"] = sig
 			userEKSection["boxes"] = filteredBoxes
+			userEKSection["creator_device_id"] = string(m.ActiveDevice().DeviceID())
 			payload["user_ek"] = userEKSection
 		} else {
 			m.Debug("skipping userEK publishing, there are no valid deviceEKs")

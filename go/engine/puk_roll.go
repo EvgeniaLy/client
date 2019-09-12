@@ -168,6 +168,7 @@ func (e *PerUserKeyRoll) inner(mctx libkb.MetaContext) error {
 			userEKSection := make(libkb.JSONPayload)
 			userEKSection["sig"] = sig
 			userEKSection["boxes"] = boxes
+			userEKSection["creator_device_id"] = string(mctx.ActiveDevice().DeviceID())
 			payload["user_ek"] = userEKSection
 		} else {
 			mctx.Debug("skipping userEK publishing, there are no valid deviceEKs")
